@@ -40,10 +40,40 @@
 
     #myButton {
       display: block;
-      width: 120px;
+      width: 120px auto;
       height: 40px;
       margin: 20px auto;
-      background-color: #4CAF50;
+      background-color: #3e9441;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    #myButton1 {
+      display: block;
+      width: 120px auto;
+      height: 40px;
+      margin: 20px auto;
+      background-color: #a38501;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    #myButton2 {
+      display: block;
+      width: 120px auto;
+      height: 40px;
+      margin: 20px auto;
+      background-color: #8a039c;
       color: #fff;
       font-size: 16px;
       text-align: center;
@@ -70,29 +100,63 @@
 
 <body> 
 <div class="container">
-<h1>Visualización de Datos PEC2</h1>
-<p>Clicando el siguiente botón se mostrará la información de la tercera visualización.</p>
-<button id="myButton">Contour plot</button>
+<h1>Visualización de Datos: PEC2</h1>
+<p>Alumna: Judith Urbina Córdoba</p>
+
+<button id="myButton1">Sankey Diagram</button>
+
+<p id="myParagraph1" class="hidden">
+  Una muestra de la visualización es la siguiente:
+
+  <img id="sankey" src="presupuestos_generales.png" alt="Sankey diagram.">
+  El jupyter notebook se puede ver en el enlace siguiente:
+</p>
+
+<button id="myButton2">Force-directed Graph</button>
+
+<p id="myParagraph2" class="hidden">
+  Una muestra de la visualización es la siguiente:
+  <img id="force" src="forcedirectedgraph.png" alt="Force-directed graph.">
+  El jupyter notebook se puede ver en el enlace siguiente:
+</p>
+
+<button id="myButton">Contour Plot</button>
 <p id="myParagraph" class="hidden">
-    La visualización es:
+  Una muestra de la visualización es la siguiente:
     <img id="contour" src="contourplot.png" alt="Contour plot.">
-    <pre id="lista" class="hidden">
-        Los datos representables son:
-    
-        datos cuantitativos,
-    
-        concretamente tres variables numéricas
-        que se presentan normalmente como matrices y
-        no necesariamente ordenadas.
-    </pre>
+    El jupyter notebook se puede ver en el enlace siguiente:
 </p>
 
 <script>
+    var sankey = document.getElementById('sankey');
+    var button1 = document.getElementById('myButton1');
+    var paragraph1 = document.getElementById('myParagraph1');
+    button1.addEventListener('click', function() {
+      if (paragraph1.classList.contains('hidden')) {
+        paragraph1.classList.remove('hidden');
+        button1.textContent = 'Esconder';
+      } else {
+        paragraph1.classList.add('hidden');
+        button1.textContent = 'Sankey Diagram';
+      }
+    });
+
+    var force = document.getElementById('force');
+    var button2 = document.getElementById('myButton2');
+    var paragraph2 = document.getElementById('myParagraph2');
+    button2.addEventListener('click', function() {
+      if (paragraph2.classList.contains('hidden')) {
+        paragraph2.classList.remove('hidden');
+        button2.textContent = 'Esconder';
+      } else {
+        paragraph2.classList.add('hidden');
+        button2.textContent = 'Force-directed Graph';
+      }
+    });
+
     var button = document.getElementById('myButton');
      var paragraph = document.getElementById('myParagraph');
-     var text = document.getElementById('lista');
      var contour = document.getElementById('contour');
- 
      button.addEventListener('click', function() {
        if (paragraph.classList.contains('hidden')) {
          paragraph.classList.remove('hidden');
@@ -102,16 +166,8 @@
          button.textContent = 'Contour Plot';
        }
      });
-     button.addEventListener('click', function() {
-       if (text.classList.contains('hidden')) {
-         text.classList.remove('hidden');
-       } else {
-         text.classList.add('hidden');
-       }
-     });
- </script>
 
-<iframe src="presupuesto_barcelona.html"></iframe>
+ </script>
 
 
 </body>
